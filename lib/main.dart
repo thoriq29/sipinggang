@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:sipinggang/ui/screens/intro.dart';
+import 'package:flutter/services.dart';
+import 'package:sipinggang/routes/app_routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sipinggang',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.standard,
       ),
-      home: const IntroPage(),
+      title: 'Sipinggang',
+      initialRoute: AppRoutes.introScreen,
+      routes: AppRoutes.routes,
     );
   }
 }
