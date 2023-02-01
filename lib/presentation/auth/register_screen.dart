@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sipinggang/core/app_export.dart';
-import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 import 'package:sipinggang/presentation/home/home_screen.dart';
 import 'package:sipinggang/widgets/custom_button.dart';
 
 import '../../widgets/input_text.dart';
-import '../app_navigation_screen/app_navigation_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   @override

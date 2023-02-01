@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipinggang/databases/users_database.dart';
 import 'package:sipinggang/model/user_model.dart';
 import 'package:sipinggang/presentation/auth/login_screen.dart';
 import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
