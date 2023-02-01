@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256411123536",
+    "project_id": "sipinggang-2f417",
+    "storage_bucket": "sipinggang-2f417.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256411123536:android:0977931ee01c108fa03655",
+        "android_client_info": {
+          "package_name": "id.sipinggang.sipinggang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256411123536-j7dp50k3rpfvqf2ce8kpku4876qb3ann.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8QfOzedoEXo9bBsPrpttBLj6VDxkzCJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256411123536-j7dp50k3rpfvqf2ce8kpku4876qb3ann.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 import 'package:sipinggang/routes/app_routes.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -13,13 +17,20 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        visualDensity: VisualDensity.standard,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: AuthProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          visualDensity: VisualDensity.standard,
+        ),
+        title: 'Sipinggang',
+        initialRoute: AppRoutes.splashScreen,
+        routes: AppRoutes.routes,
       ),
-      title: 'Sipinggang',
-      initialRoute: AppRoutes.introScreen,
-      routes: AppRoutes.routes,
     );
   }
 }

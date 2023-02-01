@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sipinggang/core/app_export.dart';
+import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
+import 'package:sipinggang/presentation/home/home_screen.dart';
 import 'package:sipinggang/widgets/custom_button.dart';
 
 import '../../widgets/input_text.dart';
@@ -34,31 +36,6 @@ class RegisterScreen extends StatelessWidget {
                 Container(
                   margin: getMargin(
                     left: 36,
-                    top: 13,
-                    right: 34,
-                  ),
-                  padding: getPadding(
-                    left: 30,
-                    top: 8,
-                    right: 30,
-                    bottom: 8,
-                  ),
-                  decoration: AppDecoration.fillWhiteA700.copyWith(
-                    borderRadius: BorderRadiusStyle.roundedBorder24,
-                  ),
-                  child: Container(
-                    margin: getMargin(
-                      top: 2,
-                    ),
-                    child: InputText(
-                      prefix : Icon(Icons.phone, size: 20,),
-                      hintText: "No Handphone",
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: getMargin(
-                    left: 36,
                     top: 10,
                     right: 34,
                   ),
@@ -72,7 +49,10 @@ class RegisterScreen extends StatelessWidget {
                     borderRadius: BorderRadiusStyle.roundedBorder24,
                   ),
                   child: InputText(
-                    prefix : Icon(Icons.person, size: 20,),
+                    prefix: Icon(
+                      Icons.person,
+                      size: 20,
+                    ),
                     hintText: "Nama Lengkap",
                   ),
                 ),
@@ -86,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                     left: 28,
                     top: 6,
                     right: 28,
-                    bottom: 6,
+                    // bottom: 4,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -101,30 +81,27 @@ class RegisterScreen extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
                           style: AppStyle.txtCairoBold20.copyWith(
+                            fontSize: 16,
                             height: getVerticalSize(
                               1.00,
                             ),
                           ),
                         ),
                       ),
-                     Row(
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Radio(
-                            value: "male", 
-                            groupValue: gender, 
-                            onChanged: (value){
-                              
-                            },
+                            value: "male",
+                            groupValue: gender,
+                            onChanged: (value) {},
                           ),
                           Text("Laki-laki"),
                           Radio(
-                            value: "female", 
-                            groupValue: gender, 
-                            onChanged: (value){
-                              
-                            },
+                            value: "female",
+                            groupValue: gender,
+                            onChanged: (value) {},
                           ),
                           Text("Perempuan"),
                         ],
@@ -135,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                 Container(
                   margin: getMargin(
                     left: 36,
-                    top: 10,
+                    top: 8,
                     right: 34,
                   ),
                   padding: getPadding(
@@ -148,7 +125,10 @@ class RegisterScreen extends StatelessWidget {
                     borderRadius: BorderRadiusStyle.roundedBorder24,
                   ),
                   child: InputText(
-                    prefix : Icon(Icons.location_city, size: 20,),
+                    prefix: Icon(
+                      Icons.location_city,
+                      size: 20,
+                    ),
                     hintText: "Tempat Lahir",
                   ),
                 ),
@@ -168,7 +148,10 @@ class RegisterScreen extends StatelessWidget {
                     borderRadius: BorderRadiusStyle.roundedBorder24,
                   ),
                   child: InputText(
-                    prefix : Icon(Icons.home, size: 20,),
+                    prefix: Icon(
+                      Icons.home,
+                      size: 20,
+                    ),
                     hintText: "Alamat",
                   ),
                 ),
@@ -185,58 +168,66 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 CustomButton(
+                  onTap: () {
+                    // AuthProvider().logOut(context);
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return HomeScreen();
+                        },
+                      ),
+                    );
+                  },
                   height: 58,
                   width: 305,
-                  text: "Daftar",
+                  text: "Isi Data Diri",
                   margin: getMargin(
                     top: 21,
                   ),
                 ),
-                Padding(
-                  padding: getPadding(
-                    top: 26,
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      AppNavigation().onTapLogin(context);
-                    },
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Sudah punya akun ?",
-                            style: TextStyle(
-                              color: ColorConstant.black900,
-                              fontSize: getFontSize(
-                                15,
-                              ),
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w100,
-                              height: getVerticalSize(
-                                1.00,
-                              ),
-                            ),
-                          ),
-                          TextSpan(
-                            text: "Masuk",
-                            style: TextStyle(
-                              color: ColorConstant.blue700,
-                              fontSize: getFontSize(
-                                15,
-                              ),
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: getVerticalSize(
-                                1.00,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: getPadding(
+                //     top: 26,
+                //   ),
+                //   child: GestureDetector(
+                //     onTap: () {},
+                //     child: RichText(
+                //       text: TextSpan(
+                //         children: [
+                //           TextSpan(
+                //             text: "Sudah punya akun ?",
+                //             style: TextStyle(
+                //               color: ColorConstant.black900,
+                //               fontSize: getFontSize(
+                //                 15,
+                //               ),
+                //               fontFamily: 'Roboto',
+                //               fontWeight: FontWeight.w100,
+                //               height: getVerticalSize(
+                //                 1.00,
+                //               ),
+                //             ),
+                //           ),
+                //           TextSpan(
+                //             text: "Masuk",
+                //             style: TextStyle(
+                //               color: ColorConstant.blue700,
+                //               fontSize: getFontSize(
+                //                 15,
+                //               ),
+                //               fontFamily: 'Roboto',
+                //               fontWeight: FontWeight.w700,
+                //               height: getVerticalSize(
+                //                 1.00,
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //       textAlign: TextAlign.left,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
