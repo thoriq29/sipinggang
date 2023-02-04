@@ -20,7 +20,6 @@ class RegisterService {
 
     if (textFieldChecked && datePickChecked) {
       try {
-        AppWidget.loadingPageIndicator(context: context);
         await UsersDatabase().updateUser(userData.docUid, {
           'fullName': registerProvider.fullName.text,
           'gender': registerProvider.gender,
@@ -28,7 +27,6 @@ class RegisterService {
           'dateOfBirth': registerProvider.dateOfBirth,
           'address': registerProvider.address.text,
         });
-        Navigator.of(context).pop();
         AppNavigation().onNavigateAuthChecker(context);
       } catch (e) {
         print(e);

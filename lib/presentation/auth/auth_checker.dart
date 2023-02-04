@@ -5,6 +5,7 @@ import 'package:sipinggang/presentation/auth/login_screen.dart';
 import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 import 'package:sipinggang/presentation/auth/register_screen.dart';
 import 'package:sipinggang/presentation/home/home_screen.dart';
+import 'package:sipinggang/widgets/app_widget.dart';
 
 // Auth status pengecekan
 class AuthChecker extends StatelessWidget {
@@ -19,7 +20,9 @@ class AuthChecker extends StatelessWidget {
         if (authProvider.auth.currentUser != null) {
           print('logedin');
           UserData userData = Provider.of<UserData>(context);
-          if (userData.fullName.isEmpty) {
+          if (userData == UserData.initialData) {
+            return Scaffold(body: AppWidget.noData());
+          } else if (userData.status == 'active' && userData.fullName.isEmpty) {
             return RegisterScreen();
           } else {
             return StreamProvider<UserData>.value(
