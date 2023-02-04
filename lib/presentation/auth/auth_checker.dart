@@ -19,7 +19,7 @@ class AuthChecker extends StatelessWidget {
         if (authProvider.auth.currentUser != null) {
           print('logedin');
           UserData userData = Provider.of<UserData>(context);
-          if (userData.username.isEmpty) {
+          if (userData.fullName.isEmpty) {
             return RegisterScreen();
           } else {
             return StreamProvider<UserData>.value(

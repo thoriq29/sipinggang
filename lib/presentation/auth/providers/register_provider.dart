@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RegisterProvider with ChangeNotifier {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> get formKey => _formKey;
+
+  set formKey(GlobalKey<FormState> value) {
+    _formKey = value;
+    notifyListeners();
+  }
+
   TextEditingController _fullName = TextEditingController();
   TextEditingController get fullName => _fullName;
 
