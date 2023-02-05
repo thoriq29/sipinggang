@@ -6,6 +6,7 @@ import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 
 import 'package:sipinggang/presentation/auth/register_screen.dart';
 import 'package:sipinggang/presentation/auth/auth_checker.dart';
+import 'package:sipinggang/presentation/home/home_screen.dart';
 
 import 'package:sipinggang/presentation/intro_screen/intro_screen.dart';
 
@@ -21,7 +22,9 @@ class AppRoutes {
 
   static const String introScreen = '/intro_screen';
 
-  static const String registerscreen = '/daftar_screen';
+  static const String registerScreen = '/daftar_screen';
+
+  static const String homeScreen = HomeScreen.routeName;
 
   static const String loginScreen = '/masuk_screen';
 
@@ -41,7 +44,8 @@ class AppRoutes {
     },
     splashScreen: (context) => SplashScreen(),
     introScreen: (context) => IntroScreen(),
-    registerscreen: (context) => RegisterScreen(),
+    registerScreen: (context) => RegisterScreen(),
+    homeScreen: (context) => HomeScreen(),
     loginScreen: (context) => LoginScreen(),
     jenisPenyakitScreen: (context) => ChangeNotifierProvider(
       create: (_) => DiagnosisProvider(),

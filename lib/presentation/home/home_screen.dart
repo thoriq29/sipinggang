@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = '/home_screen';
   const HomeScreen({super.key});
 
   @override

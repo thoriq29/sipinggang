@@ -11,7 +11,11 @@ class AppNavigation {
   }
 
   onTapDaftar(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.registerscreen);
+    Navigator.pushNamed(context, AppRoutes.registerScreen);
+  }
+
+  onTapHome(BuildContext context) {
+    Navigator.pushReplacementNamed(context, AppRoutes.homeScreen);
   }
 
   onTapJenisPenyakit(BuildContext context) {
