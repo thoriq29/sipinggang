@@ -19,7 +19,6 @@ class SplashScreen extends StatelessWidget {
               child: Image.asset(
                 ImageConstant.imgSipinggang1,
                 width: 200,
-                height: 200,
               ),
             );
           },
