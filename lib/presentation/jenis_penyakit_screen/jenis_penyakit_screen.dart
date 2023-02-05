@@ -52,9 +52,12 @@ class JenisPenyakitScreen extends StatelessWidget {
                                                       height: getSize(24.00),
                                                       width: getSize(24.00),
                                                       onTap: () {
+                                                        if(data.index == 0) {
+                                                          Navigator.pop(context);
+                                                        }
                                                         if(data.index > 0) {
                                                           data.setIndex(data.index - 1);
-                                                        }
+                                                        } 
                                                       }),
                                                   Padding(
                                                       padding:
