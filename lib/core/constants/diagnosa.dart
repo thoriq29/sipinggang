@@ -1,0 +1,10 @@
+
+enum DIAGNOSACODES {
+  GN001,
+  GN002,
+  GN003,
+  GN004,
+  GN005,
+  GN006,
+  GN007,
+}

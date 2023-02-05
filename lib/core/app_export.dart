@@ -1,4 +1,5 @@
 export 'package:sipinggang/core/constants/constants.dart';
+export 'package:sipinggang/core/constants/gejala.dart';
 export 'package:sipinggang/core/utils/image_constant.dart';
 export 'package:sipinggang/core/utils/color_constant.dart';
 export 'package:sipinggang/core/utils/size_utils.dart';

@@ -13,6 +13,7 @@ import 'package:sipinggang/presentation/intro_screen/intro_screen.dart';
 import 'package:sipinggang/presentation/jenis_penyakit_screen/jenis_penyakit_screen.dart';
 import 'package:sipinggang/presentation/hasil_diagnosa_screen/hasil_diagnosa_screen.dart';
 import 'package:sipinggang/presentation/splash/splash_screen.dart';
+import 'package:sipinggang/provider/diagnosis.dart';
 
 class AppRoutes {
   static const String authChecker = AuthChecker.routeName;
@@ -36,16 +37,20 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     authChecker: (context) {
       return StreamProvider<UserData>.value(
-          value: AuthProvider().user,
-          initialData: UserData.initialData,
-          child: AuthChecker());
+        value: AuthProvider().user,
+        initialData: UserData.initialData,
+        child: AuthChecker()
+      );
     },
     splashScreen: (context) => SplashScreen(),
     introScreen: (context) => IntroScreen(),
     registerScreen: (context) => RegisterScreen(),
     homeScreen: (context) => HomeScreen(),
     loginScreen: (context) => LoginScreen(),
-    jenisPenyakitScreen: (context) => JenisPenyakitScreen(),
+    jenisPenyakitScreen: (context) => ChangeNotifierProvider(
+      create: (_) => DiagnosisProvider(),
+      child: JenisPenyakitScreen(),
+    ),
     hasilDiagnosaScreen: (context) => HasilDiagnosaScreen(),
   };
 }

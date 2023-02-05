@@ -2,12 +2,16 @@ import 'package:sipinggang/core/app_export.dart';
 
 class Diagnosa {
   String? title;
+  GEJALACODES? code;
+  String? id;
   List<DiagnosaOptions>? options;
 
-  Diagnosa({this.title, this.options});
+  Diagnosa({this.title, this.code, this.id, this.options});
 
   Diagnosa.fromJson(Map<String, dynamic> json) {
     title = json['title'];
+    id = json['id'];
+    code = json['code'];
     if (json['options'] != null) {
       options = <DiagnosaOptions>[];
       json['options'].forEach((v) {
@@ -19,6 +23,8 @@ class Diagnosa {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['title'] = this.title;
+    data['id'] = this.id;
+    data['code'] = this.code;
     if (this.options != null) {
       data['options'] = this.options!.map((v) => v.toJson()).toList();
     }
@@ -28,7 +34,7 @@ class Diagnosa {
 
 class DiagnosaOptions {
   String? title;
-  int? value;
+  double? value;
 
   DiagnosaOptions({this.title, this.value});
 
@@ -48,7 +54,7 @@ class DiagnosaOptions {
 List<Diagnosa>? getListDiagnosa() {
   List<Diagnosa> diagnosaList =  <Diagnosa>[];
 
-  diagnosaData.forEach((element) {
+  gejalaData.forEach((element) {
      diagnosaList.add(new Diagnosa.fromJson(element));
   });
   return diagnosaList;
