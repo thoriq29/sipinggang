@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
+import 'package:sipinggang/provider/diagnosis.dart';
+import 'package:sipinggang/provider/diagnosis_info_provider.dart';
 import 'package:sipinggang/routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Provider.debugCheckInvalidValueType = null;
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -22,6 +25,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: AuthProvider(),
         ),
+        ChangeNotifierProvider.value(value: DiagnosisProvider()),
+        ChangeNotifierProvider.value(value: DiagnosisInfoProvider())
       ],
       child: MaterialApp(
         theme: ThemeData(
