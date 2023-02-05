@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sipinggang/model/user_data.dart';
 
-class UsersDatabase {
+class DiagnosticResultsDatabase {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final String collectionPath = 'users';
+  final String collectionPath = 'diagnosticResults';
 
-  UsersDatabase();
+  DiagnosticResultsDatabase();
 
-  Future createUser(
+  Future createDiagnosticResult(
     UserData user,
   ) async {
     try {

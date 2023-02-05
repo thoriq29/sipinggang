@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sipinggang/model/user_model.dart';
+import 'package:sipinggang/model/user_data.dart';
 import 'package:sipinggang/presentation/auth/login_screen.dart';
-import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
 
 import 'package:sipinggang/presentation/auth/register_screen.dart';
 import 'package:sipinggang/presentation/auth/auth_checker.dart';
-import 'package:sipinggang/presentation/home/home_screen.dart';
+import 'package:sipinggang/presentation/home_screen/home_screen.dart';
 
 import 'package:sipinggang/presentation/intro_screen/intro_screen.dart';
 
 import 'package:sipinggang/presentation/jenis_penyakit_screen/jenis_penyakit_screen.dart';
 import 'package:sipinggang/presentation/hasil_diagnosa_screen/hasil_diagnosa_screen.dart';
-import 'package:sipinggang/presentation/splash/splash_screen.dart';
+import 'package:sipinggang/presentation/splash_screen/splash_screen.dart';
+import 'package:sipinggang/provider/auth_provider.dart';
 import 'package:sipinggang/provider/diagnosis.dart';
 
 class AppRoutes {
@@ -37,10 +37,9 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     authChecker: (context) {
       return StreamProvider<UserData>.value(
-        value: AuthProvider().user,
-        initialData: UserData.initialData,
-        child: AuthChecker()
-      );
+          value: AuthProvider().user,
+          initialData: UserData.initialData,
+          child: AuthChecker());
     },
     splashScreen: (context) => SplashScreen(),
     introScreen: (context) => IntroScreen(),
@@ -48,9 +47,9 @@ class AppRoutes {
     homeScreen: (context) => HomeScreen(),
     loginScreen: (context) => LoginScreen(),
     jenisPenyakitScreen: (context) => ChangeNotifierProvider(
-      create: (_) => DiagnosisProvider(),
-      child: JenisPenyakitScreen(),
-    ),
+          create: (_) => DiagnosisProvider(),
+          child: JenisPenyakitScreen(),
+        ),
     hasilDiagnosaScreen: (context) => HasilDiagnosaScreen(),
   };
 }

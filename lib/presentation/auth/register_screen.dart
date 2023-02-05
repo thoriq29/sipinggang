@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:sipinggang/core/app_export.dart';
-import 'package:sipinggang/presentation/auth/providers/register_provider.dart';
+import 'package:sipinggang/provider/register_provider.dart';
 import 'package:sipinggang/widgets/custom_button.dart';
 import 'package:sipinggang/widgets/input_text.dart';
 
-import 'services/register_service.dart';
+import '../../services/register_service.dart';
 
 class RegisterScreen extends StatelessWidget {
   @override

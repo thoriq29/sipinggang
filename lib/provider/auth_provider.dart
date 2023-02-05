@@ -3,7 +3,7 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sipinggang/databases/users_database.dart';
-import 'package:sipinggang/model/user_model.dart';
+import 'package:sipinggang/model/user_data.dart';
 import 'package:sipinggang/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:sipinggang/presentation/auth/verification_screen.dart';
 import 'package:sipinggang/widgets/app_widget.dart';

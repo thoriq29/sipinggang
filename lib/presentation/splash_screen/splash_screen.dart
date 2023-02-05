@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sipinggang/core/app_export.dart';
-import 'package:sipinggang/presentation/splash/providers/splash_provider.dart';
+import 'package:sipinggang/provider/splash_provider.dart';
 
 class SplashScreen extends StatelessWidget {
   static const String routeName = '/splash_screen';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sipinggang/core/app_export.dart';
-import 'package:sipinggang/presentation/auth/providers/auth_count_down_provider.dart';
-import 'package:sipinggang/presentation/auth/providers/auth_provider.dart';
-import 'package:sipinggang/presentation/auth/services/auth_services.dart';
+import 'package:sipinggang/provider/auth_provider.dart';
+import 'package:sipinggang/services/auth_services.dart';
 import 'package:sipinggang/widgets/custom_button.dart';
 import 'package:sipinggang/widgets/input_text.dart';
+import 'package:sipinggang/provider/auth_count_down_provider.dart';
 
 class VerificationScreen extends StatelessWidget {
   final String beUserPhone;
