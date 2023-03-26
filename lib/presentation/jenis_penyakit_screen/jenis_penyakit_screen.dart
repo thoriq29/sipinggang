@@ -30,116 +30,101 @@ class JenisPenyakitScreen extends StatelessWidget {
                                 height: size.height - 55,
                                 margin: getMargin(top: 22),
                                 padding: getPadding(top: 40, bottom: 40),
-                                decoration:
-                                    AppDecoration.outlineBlack9000f.copyWith(
-                                  borderRadius:
-                                      BorderRadiusStyle.customBorderTL50,
-                                ),
+                                decoration: AppDecoration.outlineBlack9000f
+                                    .copyWith(
+                                        borderRadius:
+                                            BorderRadiusStyle.customBorderTL50),
                                 child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Container(
-                                        height: getVerticalSize(6.00),
-                                        width: getHorizontalSize(45.00),
-                                        decoration: BoxDecoration(
-                                          color: ColorConstant.black90063,
-                                          borderRadius: BorderRadius.circular(
-                                            getHorizontalSize(3.00),
-                                          ),
-                                        ),
-                                      ),
+                                          height: getVerticalSize(6.00),
+                                          width: getHorizontalSize(45.00),
+                                          decoration: BoxDecoration(
+                                              color: ColorConstant.black90063,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      getHorizontalSize(
+                                                          3.00)))),
                                       Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Padding(
-                                          padding:
-                                              getPadding(left: 16, top: 31),
-                                          child: Row(
-                                            children: [
-                                              CustomImageView(
-                                                svgPath:
-                                                    ImageConstant.imgArrowleft,
-                                                height: getSize(24.00),
-                                                width: getSize(24.00),
-                                                onTap: () {
-                                                  AppNavigation()
-                                                      .onTapHome(context);
-                                                },
-                                              ),
-                                              Padding(
-                                                padding: getPadding(
-                                                    left: 12, top: 1),
-                                                child: Text(
-                                                  "Diagnosa",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.left,
-                                                  style: AppStyle
-                                                      .txtRobotoRomanMedium18
-                                                      .copyWith(
-                                                    height:
-                                                        getVerticalSize(1.00),
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                              padding:
+                                                  getPadding(left: 16, top: 31),
+                                              child: Row(children: [
+                                                CustomImageView(
+                                                    svgPath: ImageConstant
+                                                        .imgArrowleft,
+                                                    height: getSize(24.00),
+                                                    width: getSize(24.00),
+                                                    onTap: () {
+                                                      AppNavigation()
+                                                          .onTapHome(context);
+                                                    }),
+                                                Padding(
+                                                    padding: getPadding(
+                                                        left: 12, top: 1),
+                                                    child: Text("Diagnosa",
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.left,
+                                                        style: AppStyle
+                                                            .txtRobotoRomanMedium18
+                                                            .copyWith(
+                                                                height:
+                                                                    getVerticalSize(
+                                                                        1.00))))
+                                              ]))),
                                       Container(
-                                        height: getVerticalSize(1.00),
-                                        width: size.width,
-                                        margin: getMargin(top: 19),
-                                        decoration: BoxDecoration(
-                                          color: ColorConstant.gray90063,
-                                        ),
-                                      ),
+                                          height: getVerticalSize(1.00),
+                                          width: size.width,
+                                          margin: getMargin(top: 19),
+                                          decoration: BoxDecoration(
+                                              color: ColorConstant.gray90063)),
                                       DiagnosisInfo(
-                                        diagnosa: data.activeDiagnosa,
-                                        callbackFunction: (code, val) {},
-                                      ),
+                                          diagnosa: data.activeDiagnosa,
+                                          callbackFunction: (code, val) {}),
                                       CustomButton(
-                                        height: 58,
-                                        width: 305,
-                                        text: data.isLastQuestion
-                                            ? "Selesai"
-                                            : "Selanjutnya",
-                                        onTap: () {
-                                          data.updateOrCreateDiagnosa(
-                                              data.activeDiagnosa?.code,
+                                          height: 58,
+                                          width: 305,
+                                          text: data.isLastQuestion
+                                              ? "Selesai"
+                                              : "Selanjutnya",
+                                          onTap: () {
+                                            data.updateOrCreateDiagnosa(
+                                                data.activeDiagnosa?.code,
+                                                diagnosisInfoProvider
+                                                    .selectedRadioValue);
+                                            if (!data.isLastQuestion) {
+                                              data.setIndex(data.index + 1);
+                                              // data.addDiagnosa(data.activeDiagnosa)
+                                            } else {
+                                              Map<String, dynamic> result =
+                                                  GenerateHasilDiagnosis()
+                                                      .execute(data
+                                                          .selectedDiagnosaList);
                                               diagnosisInfoProvider
-                                                  .selectedRadioValue);
-                                          if (!data.isLastQuestion) {
-                                            data.setIndex(data.index + 1);
-                                            // data.addDiagnosa(data.activeDiagnosa)
-                                          } else {
-                                            Map<String, dynamic> result =
-                                                GenerateHasilDiagnosis()
-                                                    .execute(data
-                                                        .selectedDiagnosaList);
+                                                  .setResult(result);
+                                              Navigator.pushNamed(
+                                                  context,
+                                                  AppRoutes
+                                                      .hasilDiagnosaScreen);
+                                            }
+                                            var oldRadioValue =
+                                                data.selectedDiagnosaList[
+                                                    data.activeDiagnosa?.code];
+                                            double? radioValue =
+                                                oldRadioValue != null
+                                                    ? oldRadioValue["value"]
+                                                    : 0.8;
                                             diagnosisInfoProvider
-                                                .setResult(result);
-                                            Navigator.pushNamed(
-                                              context,
-                                              AppRoutes.hasilDiagnosaScreen,
-                                            );
-                                          }
-                                          var oldRadioValue =
-                                              data.selectedDiagnosaList[
-                                                  data.activeDiagnosa?.code];
-                                          double? radioValue =
-                                              oldRadioValue != null
-                                                  ? oldRadioValue["value"]
-                                                  : 0.8;
-                                          diagnosisInfoProvider
-                                              .setSelectedRadioValue(
-                                                  radioValue);
-                                        },
-                                        margin: getMargin(
-                                          top: 22,
-                                          bottom: 0,
-                                        ),
-                                      ),
+                                                .setSelectedRadioValue(
+                                                    radioValue);
+                                          },
+                                          margin:
+                                              getMargin(top: 22, bottom: 0)),
                                       data.index != 0
                                           ? CustomButton(
                                               height: 58,

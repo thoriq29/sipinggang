@@ -6,9 +6,11 @@ class AppWidget {
   static AppBar appBar({
     required String title,
     Widget? leading,
+    List<Widget>? actions,
   }) {
     return AppBar(
       centerTitle: true,
+      automaticallyImplyLeading: false,
       leading: leading ?? const BackButton(),
       title: Text(
         title,
@@ -16,6 +18,7 @@ class AppWidget {
           color: Colors.white,
         ),
       ),
+      actions: actions,
     );
   }
 
